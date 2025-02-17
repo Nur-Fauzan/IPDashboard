@@ -1,0 +1,221 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (cctv2Delete.ActionResult is EmptyResult) { // Terminate page
+        return;
+    }
+
+    // Layout
+    if (!cctv2Delete.UseLayout) // UseLayout = false // DN
+        Layout = "";
+    else
+        Layout = "_Layout";
+
+    // Local variables (Temp data)
+    #pragma warning disable 168
+    string? sqlWrk, filterWrk, whereWrk, curVal, dispVal;
+    List<Dictionary<string, object>>? rswrk;
+    string[]? arWrk;
+    List<object?>? listWrk;
+    object? guidWrk;
+    Func<string>? lookupFilter;
+    #pragma warning restore 168
+}
+<script>
+var currentTable = @Html.Raw(ConvertToJson(cctv2Delete.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { CCTV2: currentTable } });
+var currentPageID = ew.PAGE_ID = "delete";
+var currentForm;
+var fCCTV2delete;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fCCTV2delete")
+        .setPageId("delete")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+@cctv2Delete.ShowPageHeader()
+@cctv2Delete.ShowMessages()
+<form name="fCCTV2delete" id="fCCTV2delete" class="ew-form ew-delete-form" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (CurrentPage.CheckToken) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="action" id="action" value="delete">
+@foreach (string key in cctv2Delete.RecordKeys) {
+<input type="hidden" name="key_m[]" value="@key">
+}
+<div class="card ew-card ew-grid @(cctv2Delete.TableGridClass)">
+<div class="card-body ew-grid-middle-panel @(cctv2Delete.TableContainerClass)" style="@(cctv2Delete.TableContainerStyle)">
+<table class="@(cctv2Delete.TableClass)">
+    <thead>
+    <tr class="ew-table-header">
+@if (cctv2Delete.ID.Visible) { // cctv2Delete.ID.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.ID.HeaderCellClass)"><span id="elh_CCTV2_ID" class="CCTV2_ID">@Html.Raw(cctv2Delete.ID.Caption)</span></th>
+} @* cctv2Delete.ID.Visible (end) *@
+@if (cctv2Delete.Code.Visible) { // cctv2Delete.Code.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.Code.HeaderCellClass)"><span id="elh_CCTV2_Code" class="CCTV2_Code">@Html.Raw(cctv2Delete.Code.Caption)</span></th>
+} @* cctv2Delete.Code.Visible (end) *@
+@if (cctv2Delete._Name.Visible) { // cctv2Delete._Name.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete._Name.HeaderCellClass)"><span id="elh_CCTV2__Name" class="CCTV2__Name">@Html.Raw(cctv2Delete._Name.Caption)</span></th>
+} @* cctv2Delete._Name.Visible (end) *@
+@if (cctv2Delete.Loc.Visible) { // cctv2Delete.Loc.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.Loc.HeaderCellClass)"><span id="elh_CCTV2_Loc" class="CCTV2_Loc">@Html.Raw(cctv2Delete.Loc.Caption)</span></th>
+} @* cctv2Delete.Loc.Visible (end) *@
+@if (cctv2Delete.Status.Visible) { // cctv2Delete.Status.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.Status.HeaderCellClass)"><span id="elh_CCTV2_Status" class="CCTV2_Status">@Html.Raw(cctv2Delete.Status.Caption)</span></th>
+} @* cctv2Delete.Status.Visible (end) *@
+@if (cctv2Delete.Incident.Visible) { // cctv2Delete.Incident.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.Incident.HeaderCellClass)"><span id="elh_CCTV2_Incident" class="CCTV2_Incident">@Html.Raw(cctv2Delete.Incident.Caption)</span></th>
+} @* cctv2Delete.Incident.Visible (end) *@
+@if (cctv2Delete.CreatedDateTime.Visible) { // cctv2Delete.CreatedDateTime.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.CreatedDateTime.HeaderCellClass)"><span id="elh_CCTV2_CreatedDateTime" class="CCTV2_CreatedDateTime">@Html.Raw(cctv2Delete.CreatedDateTime.Caption)</span></th>
+} @* cctv2Delete.CreatedDateTime.Visible (end) *@
+@if (cctv2Delete.CreatedByUserID.Visible) { // cctv2Delete.CreatedByUserID.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.CreatedByUserID.HeaderCellClass)"><span id="elh_CCTV2_CreatedByUserID" class="CCTV2_CreatedByUserID">@Html.Raw(cctv2Delete.CreatedByUserID.Caption)</span></th>
+} @* cctv2Delete.CreatedByUserID.Visible (end) *@
+@if (cctv2Delete.UpdatedDateTime.Visible) { // cctv2Delete.UpdatedDateTime.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.UpdatedDateTime.HeaderCellClass)"><span id="elh_CCTV2_UpdatedDateTime" class="CCTV2_UpdatedDateTime">@Html.Raw(cctv2Delete.UpdatedDateTime.Caption)</span></th>
+} @* cctv2Delete.UpdatedDateTime.Visible (end) *@
+@if (cctv2Delete.UpdatedByUserID.Visible) { // cctv2Delete.UpdatedByUserID.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.UpdatedByUserID.HeaderCellClass)"><span id="elh_CCTV2_UpdatedByUserID" class="CCTV2_UpdatedByUserID">@Html.Raw(cctv2Delete.UpdatedByUserID.Caption)</span></th>
+} @* cctv2Delete.UpdatedByUserID.Visible (end) *@
+@if (cctv2Delete.Perbaikan.Visible) { // cctv2Delete.Perbaikan.Visible (begin)
+        <th class="@Html.Raw(cctv2Delete.Perbaikan.HeaderCellClass)"><span id="elh_CCTV2_Perbaikan" class="CCTV2_Perbaikan">@Html.Raw(cctv2Delete.Perbaikan.Caption)</span></th>
+} @* cctv2Delete.Perbaikan.Visible (end) *@
+    </tr>
+    </thead>
+    <tbody>
+@{ cctv2Delete.RecordCount = 0; }
+@while (cctv2Delete.Recordset != null && await cctv2Delete.Recordset.ReadAsync()) { // DN
+    cctv2Delete.RecordCount++;
+    cctv2Delete.RowCount++;
+
+    // Set row properties
+    cctv2Delete.ResetAttributes();
+    cctv2Delete.RowType = RowType.View; // View
+
+    // Get the field contents
+    await cctv2Delete.LoadRowValues(cctv2Delete.Recordset);
+
+    // Render row
+    await cctv2Delete.RenderRow();
+    <tr @Html.Raw(cctv2Delete.RowAttributes)>
+@if (cctv2Delete.ID.Visible) { // cctv2Delete.ID.Visible (begin)
+        <td @Html.Raw(cctv2Delete.ID.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.ID.ViewAttributes)>
+@Html.Raw(cctv2Delete.ID.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.ID.Visible (end) *@
+@if (cctv2Delete.Code.Visible) { // cctv2Delete.Code.Visible (begin)
+        <td @Html.Raw(cctv2Delete.Code.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.Code.ViewAttributes)>
+@Html.Raw(cctv2Delete.Code.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.Code.Visible (end) *@
+@if (cctv2Delete._Name.Visible) { // cctv2Delete._Name.Visible (begin)
+        <td @Html.Raw(cctv2Delete._Name.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete._Name.ViewAttributes)>
+@Html.Raw(cctv2Delete._Name.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete._Name.Visible (end) *@
+@if (cctv2Delete.Loc.Visible) { // cctv2Delete.Loc.Visible (begin)
+        <td @Html.Raw(cctv2Delete.Loc.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.Loc.ViewAttributes)>
+@Html.Raw(cctv2Delete.Loc.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.Loc.Visible (end) *@
+@if (cctv2Delete.Status.Visible) { // cctv2Delete.Status.Visible (begin)
+        <td @Html.Raw(cctv2Delete.Status.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.Status.ViewAttributes)>
+<div class="form-check d-inline-block">
+    <input type="checkbox" id="x_Status_@(cctv2Delete.RowCount)" class="form-check-input" value="@(cctv2Delete.Status.GetViewValue())" disabled checked="@(ConvertToBool(cctv2Delete.Status.CurrentValue))">
+    <label class="form-check-label" for="x_Status_@(cctv2Delete.RowCount)"></label>
+</div></span>
+</span></td>
+} @* cctv2Delete.Status.Visible (end) *@
+@if (cctv2Delete.Incident.Visible) { // cctv2Delete.Incident.Visible (begin)
+        <td @Html.Raw(cctv2Delete.Incident.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.Incident.ViewAttributes)>
+@Html.Raw(cctv2Delete.Incident.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.Incident.Visible (end) *@
+@if (cctv2Delete.CreatedDateTime.Visible) { // cctv2Delete.CreatedDateTime.Visible (begin)
+        <td @Html.Raw(cctv2Delete.CreatedDateTime.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.CreatedDateTime.ViewAttributes)>
+@Html.Raw(cctv2Delete.CreatedDateTime.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.CreatedDateTime.Visible (end) *@
+@if (cctv2Delete.CreatedByUserID.Visible) { // cctv2Delete.CreatedByUserID.Visible (begin)
+        <td @Html.Raw(cctv2Delete.CreatedByUserID.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.CreatedByUserID.ViewAttributes)>
+@Html.Raw(cctv2Delete.CreatedByUserID.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.CreatedByUserID.Visible (end) *@
+@if (cctv2Delete.UpdatedDateTime.Visible) { // cctv2Delete.UpdatedDateTime.Visible (begin)
+        <td @Html.Raw(cctv2Delete.UpdatedDateTime.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.UpdatedDateTime.ViewAttributes)>
+@Html.Raw(cctv2Delete.UpdatedDateTime.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.UpdatedDateTime.Visible (end) *@
+@if (cctv2Delete.UpdatedByUserID.Visible) { // cctv2Delete.UpdatedByUserID.Visible (begin)
+        <td @Html.Raw(cctv2Delete.UpdatedByUserID.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.UpdatedByUserID.ViewAttributes)>
+@Html.Raw(cctv2Delete.UpdatedByUserID.GetViewValue())</span>
+</span></td>
+} @* cctv2Delete.UpdatedByUserID.Visible (end) *@
+@if (cctv2Delete.Perbaikan.Visible) { // cctv2Delete.Perbaikan.Visible (begin)
+        <td @Html.Raw(cctv2Delete.Perbaikan.CellAttributes)>
+<span id="">
+<span @Html.Raw(cctv2Delete.Perbaikan.ViewAttributes)>
+<div class="form-check d-inline-block">
+    <input type="checkbox" id="x_Perbaikan_@(cctv2Delete.RowCount)" class="form-check-input" value="@(cctv2Delete.Perbaikan.GetViewValue())" disabled checked="@(ConvertToBool(cctv2Delete.Perbaikan.CurrentValue))">
+    <label class="form-check-label" for="x_Perbaikan_@(cctv2Delete.RowCount)"></label>
+</div></span>
+</span></td>
+} @* cctv2Delete.Perbaikan.Visible (end) *@
+    </tr>
+}
+@{ cctv2Delete.CloseRecordset(); }
+</tbody>
+</table>
+</div>
+</div>
+<div class="ew-buttons ew-desktop-buttons">
+<button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit">@Html.Raw(Language.Phrase("DeleteBtn"))</button>
+<button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-href="@AppPath(cctv2Delete.ReturnUrl)">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+</div>
+</form>
+@cctv2Delete.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>

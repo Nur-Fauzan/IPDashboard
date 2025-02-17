@@ -1,0 +1,306 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (cctv2List.ActionResult is EmptyResult) { // Terminate page
+        return;
+    }
+
+    // Layout
+    if (!cctv2List.UseLayout) // UseLayout = false // DN
+        Layout = "";
+    else
+        Layout = "_Layout";
+
+    // Local variables (Temp data)
+    #pragma warning disable 168
+    string? sqlWrk, filterWrk, whereWrk, curVal, dispVal;
+    List<Dictionary<string, object>>? rswrk;
+    string[]? arWrk;
+    List<object?>? listWrk;
+    object? guidWrk;
+    Func<string>? lookupFilter;
+    #pragma warning restore 168
+}
+@if (!cctv2List.IsExport()) {
+<script>
+var currentTable = @Html.Raw(ConvertToJson(cctv2List.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { CCTV2: currentTable } });
+var currentPageID = ew.PAGE_ID = "list";
+var currentForm;
+var @(cctv2List.FormName);
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("@(cctv2List.FormName)")
+        .setPageId("list")
+        .setSubmitWithFetch(@(cctv2List.UseAjaxActions ? "true" : "false"))
+        .setFormKeyCountName("@(cctv2List.FormKeyCountName)")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+}
+@if (!cctv2List.IsExport()) {
+<div class="btn-toolbar ew-toolbar">
+@if (cctv2List.TotalRecords > 0 && cctv2List.ExportOptions.Visible) {
+    cctv2List.ExportOptions.Render("body");
+}
+@if (cctv2List.ImportOptions.Visible) {
+    cctv2List.ImportOptions.Render("body");
+}
+@if (cctv2List.SearchOptions.Visible) {
+    cctv2List.SearchOptions.Render("body");
+}
+@if (cctv2List.FilterOptions.Visible) {
+    cctv2List.FilterOptions.Render("body");
+}
+</div>
+}
+@if (!cctv2List.IsModal) {
+<form name="fCCTV2srch" id="fCCTV2srch" class="ew-form ew-ext-search-form" action="@AppPath(CurrentPageName())" novalidate autocomplete="off">
+<div id="fCCTV2srch_search_panel" class="mb-2 mb-sm-0 @(cctv2List.SearchPanelClass)"><!-- .ew-search-panel -->
+<script>
+var currentTable = @Html.Raw(ConvertToJson(cctv2List.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { CCTV2: currentTable } });
+var currentForm;
+var fCCTV2srch, currentSearchForm, currentAdvancedSearchForm;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery,
+        fields = currentTable.fields;
+
+    // Form object for search
+    let form = new ew.FormBuilder()
+        .setId("fCCTV2srch")
+        .setPageId("list")
+@if (cctv2List.UseAjaxActions) {
+        <text>.setSubmitWithFetch(true)</text>
+}
+
+        // Dynamic selection lists
+        .setLists({
+        })
+
+        // Filters
+        .setFilterList(@Html.Raw(await cctv2List.GetFilterList()))
+        .build();
+    window[form.id] = form;
+    currentSearchForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<input type="hidden" name="cmd" value="search">
+@if (Security.CanSearch) {
+if (!cctv2List.IsExport() && Empty(cctv2List.CurrentAction) && cctv2List.HasSearchFields()) { @* Show search form (begin) *@
+<div class="ew-extended-search container-fluid ps-2">
+<div class="row mb-0">
+    <div class="col-sm-auto px-0 pe-sm-2">
+        <div class="ew-basic-search input-group">
+            <input type="search" name="@(Config.TableBasicSearch)" id="@(Config.TableBasicSearch)" class="form-control ew-basic-search-keyword" value="@Html.Raw(HtmlEncode(cctv2List.BasicSearch.SessionKeyword))" placeholder="@(HtmlEncode(Language.Phrase("Search")))" aria-label="@(HtmlEncode(Language.Phrase("Search")))">
+            <input type="hidden" name="@(Config.TableBasicSearchType)" id="@(Config.TableBasicSearchType)" class="ew-basic-search-type" value="@(HtmlEncode(cctv2List.BasicSearch.SessionType))">
+            <button type="button" data-bs-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" aria-haspopup="true" aria-expanded="false">
+                <span id="searchtype">@Html.Raw(cctv2List.BasicSearch.TypeNameShort)</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <button type="button" class="dropdown-item@(cctv2List.BasicSearch.SessionType == "" ? " active" : "")" form="fCCTV2srch" data-ew-action="search-type">@Html.Raw(Language.Phrase("QuickSearchAuto"))</button>
+                <button type="button" class="dropdown-item@(cctv2List.BasicSearch.SessionType == "=" ? " active" : "")" form="fCCTV2srch" data-ew-action="search-type" data-search-type="=">@Html.Raw(Language.Phrase("QuickSearchExact"))</button>
+                <button type="button" class="dropdown-item@(cctv2List.BasicSearch.SessionType == "AND" ? " active" : "")" form="fCCTV2srch" data-ew-action="search-type" data-search-type="AND">@Html.Raw(Language.Phrase("QuickSearchAll"))</button>
+                <button type="button" class="dropdown-item@(cctv2List.BasicSearch.SessionType == "OR" ? " active" : "")" form="fCCTV2srch" data-ew-action="search-type" data-search-type="OR">@Html.Raw(Language.Phrase("QuickSearchAny"))</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-auto mb-3">
+        <button class="btn btn-primary" name="btn-submit" id="btn-submit" type="submit">@Html.Raw(Language.Phrase("SearchBtn"))</button>
+    </div>
+</div>
+</div><!-- /.ew-extended-search -->
+} @* Show search form (end) *@
+}
+</div><!-- /.ew-search-panel -->
+</form>
+}
+@cctv2List.ShowPageHeader()
+@cctv2List.ShowMessages()
+<main class="list @(cctv2List.TotalRecords == 0 && !cctv2List.IsAdd ? " ew-no-record" : "")">
+<div id="ew-list">
+@if (cctv2List.TotalRecords > 0 || !Empty(cctv2List.CurrentAction)) {
+<div class="card ew-card ew-grid@(cctv2List.IsAddOrEdit ? " ew-grid-add-edit" : "") @(cctv2List.TableGridClass)">
+<form name="@(cctv2List.FormName)" id="@(cctv2List.FormName)" class="ew-form ew-list-form" action="@AppPath(cctv2List.PageName)" method="post" novalidate autocomplete="off">
+@if (CurrentPage.CheckToken) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+@if (cctv2List.IsModal) {
+<input type="hidden" name="modal" value="1">
+}
+<div id="gmp_CCTV2" class="card-body ew-grid-middle-panel @(cctv2List.TableContainerClass)" style="@(cctv2List.TableContainerStyle)">
+@if (cctv2List.TotalRecords > 0 || cctv2List.IsGridEdit || cctv2List.IsMultiEdit) {
+<table id="tbl_CCTV2list" class="@(cctv2List.TableClass)"><!-- .ew-table -->
+<thead>
+    <tr class="ew-table-header">
+@{
+    // Header row
+    cctv2List.RowType = RowType.Header;
+
+    // Render list options
+    await cctv2List.RenderListOptions();
+}
+@* Render list options (header, left) *@
+@cctv2List.ListOptions.RenderHeader("left")
+@if (cctv2List.ID.Visible) { // cctv2List.ID.Visible (begin)
+        <th data-name="ID" class="@(cctv2List.ID.HeaderCellClass)"><div id="elh_CCTV2_ID" class="CCTV2_ID">@Html.Raw(cctv2List.RenderFieldHeader(cctv2List.ID))</div></th>
+} @* cctv2List.ID.Visible (end) *@
+@if (cctv2List.Code.Visible) { // cctv2List.Code.Visible (begin)
+        <th data-name="Code" class="@(cctv2List.Code.HeaderCellClass)"><div id="elh_CCTV2_Code" class="CCTV2_Code">@Html.Raw(cctv2List.RenderFieldHeader(cctv2List.Code))</div></th>
+} @* cctv2List.Code.Visible (end) *@
+@if (cctv2List._Name.Visible) { // cctv2List._Name.Visible (begin)
+        <th data-name="_Name" class="@(cctv2List._Name.HeaderCellClass)"><div id="elh_CCTV2__Name" class="CCTV2__Name">@Html.Raw(cctv2List.RenderFieldHeader(cctv2List._Name))</div></th>
+} @* cctv2List._Name.Visible (end) *@
+@if (cctv2List.Loc.Visible) { // cctv2List.Loc.Visible (begin)
+        <th data-name="Loc" class="@(cctv2List.Loc.HeaderCellClass)"><div id="elh_CCTV2_Loc" class="CCTV2_Loc">IP</div></th>
+} @* cctv2List.Loc.Visible (end) *@
+@if (cctv2List.Incident.Visible) { // cctv2List.Incident.Visible (begin)
+        <th data-name="Incident" class="@(cctv2List.Incident.HeaderCellClass)"><div id="elh_CCTV2_Incident" class="CCTV2_Incident">Port</div></th>
+} @* cctv2List.Incident.Visible (end) *@
+@if (cctv2List.Status.Visible) { // cctv2List.Status.Visible (begin)
+        <th data-name="Status" class="@(cctv2List.Status.HeaderCellClass)"><div id="elh_CCTV2_Status" class="CCTV2_Status">@Html.Raw(cctv2List.RenderFieldHeader(cctv2List.Status))</div></th>
+} @* cctv2List.Status.Visible (end) *@
+@* Render list options (header, right) *@
+@cctv2List.ListOptions.RenderHeader("right")
+    </tr>
+</thead>
+<tbody data-page="@(cctv2List.PageNumber)">
+@{
+    await cctv2List.SetupGrid();
+    bool eof = cctv2List.Recordset == null; // DN
+}
+@while (cctv2List.RecordCount < cctv2List.StopRecord || SameString(cctv2List.RowIndex, "$rowindex$")) { // Begin While
+    if (!eof && !SameString(cctv2List.RowIndex, "$rowindex$") &&
+        (!cctv2List.IsGridAdd || cctv2List.CurrentMode == "copy") &&
+        (!((cctv2List.IsCopy || cctv2List.IsAdd) && cctv2List.RowIndex is int rowIndex && rowIndex == 0))) // DN
+        eof = !await cctv2List.Recordset.ReadAsync();
+    cctv2List.RecordCount++;
+    if (cctv2List.RecordCount >= cctv2List.StartRecord) {
+        await cctv2List.SetupRow();
+    <tr @Html.Raw(cctv2List.RowAttributes)>
+    @* Render list options (body, left) *@
+    @cctv2List.ListOptions.RenderBody("left", cctv2List.RowCount)
+    @if (cctv2List.ID.Visible) { // cctv2List.ID.Visible (begin)
+        <td data-name="ID" @Html.Raw(cctv2List.ID.CellAttributes)>
+<span id="el@(cctv2List.RowIndex == "$rowindex$" ? "$rowindex$" : cctv2List.RowCount)_CCTV2_ID" class="el_CCTV2_ID">
+<span @Html.Raw(cctv2List.ID.ViewAttributes)>
+@Html.Raw(cctv2List.ID.GetViewValue())</span>
+</span>
+</td>
+    } @* cctv2List.ID.Visible (end) *@
+    @if (cctv2List.Code.Visible) { // cctv2List.Code.Visible (begin)
+        <td data-name="Code" @Html.Raw(cctv2List.Code.CellAttributes)>
+<span id="el@(cctv2List.RowIndex == "$rowindex$" ? "$rowindex$" : cctv2List.RowCount)_CCTV2_Code" class="el_CCTV2_Code">
+<span @Html.Raw(cctv2List.Code.ViewAttributes)>
+@Html.Raw(cctv2List.Code.GetViewValue())</span>
+</span>
+</td>
+    } @* cctv2List.Code.Visible (end) *@
+    @if (cctv2List._Name.Visible) { // cctv2List._Name.Visible (begin)
+        <td data-name="_Name" @Html.Raw(cctv2List._Name.CellAttributes)>
+<span id="el@(cctv2List.RowIndex == "$rowindex$" ? "$rowindex$" : cctv2List.RowCount)_CCTV2__Name" class="el_CCTV2__Name">
+<span @Html.Raw(cctv2List._Name.ViewAttributes)>
+@Html.Raw(cctv2List._Name.GetViewValue())</span>
+</span>
+</td>
+    } @* cctv2List._Name.Visible (end) *@
+    @if (cctv2List.Loc.Visible) { // cctv2List.Loc.Visible (begin)
+        <td data-name="Loc" @Html.Raw(cctv2List.Loc.CellAttributes)>
+<span id="el@(cctv2List.RowIndex == "$rowindex$" ? "$rowindex$" : cctv2List.RowCount)_CCTV2_Loc" class="el_CCTV2_Loc">
+<span @Html.Raw(cctv2List.Loc.ViewAttributes)>
+@Html.Raw(cctv2List.Loc.GetViewValue())</span>
+</span>
+</td>
+    } @* cctv2List.Status.Visible (end) *@
+    @if (cctv2List.Incident.Visible) { // cctv2List.Incident.Visible (begin)
+        <td data-name="Incident" @Html.Raw(cctv2List.Incident.CellAttributes)>
+<span id="el@(cctv2List.RowIndex == "$rowindex$" ? "$rowindex$" : cctv2List.RowCount)_CCTV2_Incident" class="el_CCTV2_Incident">
+<span @Html.Raw(cctv2List.Incident.ViewAttributes)>
+@Html.Raw(cctv2List.Incident.GetViewValue())</span>
+</span>
+</td>
+    } @* cctv2List.Loc.Visible (end) *@
+    @if (cctv2List.Status.Visible) { // cctv2List.Status.Visible (begin)
+        <td data-name="Status" @Html.Raw(cctv2List.Status.CellAttributes)>
+<span id="el@(cctv2List.RowIndex == "$rowindex$" ? "$rowindex$" : cctv2List.RowCount)_CCTV2_Status" class="el_CCTV2_Status">
+<span @Html.Raw(cctv2List.Status.ViewAttributes)>
+<div class="form-check d-inline-block">
+    <input type="checkbox" id="x_Status_@(cctv2List.RowCount)" class="form-check-input" value="@(cctv2List.Status.GetViewValue())" disabled checked="@(ConvertToBool(cctv2List.Status.CurrentValue))">
+    <label class="form-check-label" for="x_Status_@(cctv2List.RowCount)"></label>
+</div></span>
+</span>
+</td>
+    } @* cctv2List.Perbaikan.Visible (end) *@
+    @* Render list options (body, right) *@
+    @cctv2List.ListOptions.RenderBody("right", cctv2List.RowCount)
+    </tr>
+    } @* End if *@
+
+    // Reset for template row
+    if (SameString(cctv2List.RowIndex, "$rowindex$"))
+        cctv2List.RowIndex = 0;
+
+    // Reset inline add/copy row
+    if ((cctv2List.IsCopy || cctv2List.IsAdd) && cctv2List.RowIndex is int rowIndex2 && rowIndex2 == 0)
+        cctv2List.RowIndex = 1;
+} @* End While *@
+</tbody>
+</table><!-- /.ew-table -->
+} @* End If TotalRecords > 0 *@
+</div><!-- /.ew-grid-middle-panel -->
+@if (Empty(cctv2List.CurrentAction) && !cctv2List.UseAjaxActions) {
+<input type="hidden" name="action" id="action" value="">
+}
+</form><!-- /.ew-list-form -->
+@{ cctv2List.CloseRecordset(); }
+@if (!cctv2List.IsExport()) {
+<div class="card-footer ew-grid-lower-panel">
+@if (!cctv2List.IsGridAdd && !(cctv2List.IsGridEdit && cctv2List.ModalGridEdit) && !cctv2List.IsMultiEdit) {
+@Html.Raw(cctv2List.Pager.Render())
+}
+<div class="ew-list-other-options">
+@cctv2List.OtherOptions.RenderBody("bottom")
+</div>
+</div>
+}
+</div><!-- /.ew-grid -->
+} else { // Show other options
+<div class="ew-list-other-options">
+@cctv2List.OtherOptions.ForEach(opt => opt.ButtonClass = "").RenderBody()
+</div>
+}
+</div>
+</main>
+@cctv2List.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+@if (!cctv2List.IsExport()) {
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("CCTV2");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>
+}

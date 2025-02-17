@@ -1,0 +1,304 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (cctv2Add.ActionResult is EmptyResult) { // Terminate page
+        return;
+    }
+
+    // Layout
+    if (!cctv2Add.UseLayout) // UseLayout = false // DN
+        Layout = "";
+    else
+        Layout = "_Layout";
+
+    // Local variables (Temp data)
+    #pragma warning disable 168
+    string? sqlWrk, filterWrk, whereWrk, curVal, dispVal;
+    List<Dictionary<string, object>>? rswrk;
+    string[]? arWrk;
+    List<object?>? listWrk;
+    object? guidWrk;
+    Func<string>? lookupFilter;
+    #pragma warning restore 168
+}
+<script>
+var currentTable = @Html.Raw(ConvertToJson(cctv2Add.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { CCTV2: currentTable } });
+var currentPageID = ew.PAGE_ID = "add";
+var currentForm;
+var fCCTV2add;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fCCTV2add")
+        .setPageId("add")
+
+        // Add fields
+        .setFields([
+
+            ["Code", [fields.Code.visible && fields.Code.required ? ew.Validators.required(fields.Code.caption) : null], fields.Code.isInvalid],
+            ["_Name", [fields._Name.visible && fields._Name.required ? ew.Validators.required(fields._Name.caption) : null], fields._Name.isInvalid],
+            ["Loc", [fields.Loc.visible && fields.Loc.required ? ew.Validators.required(fields.Loc.caption) : null], fields.Loc.isInvalid],
+            ["Status", [fields.Status.visible && fields.Status.required ? ew.Validators.required(fields.Status.caption) : null], fields.Status.isInvalid],
+            ["Incident", [fields.Incident.visible && fields.Incident.required ? ew.Validators.required(fields.Incident.caption) : null, ew.Validators.integer], fields.Incident.isInvalid],
+            ["CreatedDateTime", [fields.CreatedDateTime.visible && fields.CreatedDateTime.required ? ew.Validators.required(fields.CreatedDateTime.caption) : null, ew.Validators.datetime(fields.CreatedDateTime.clientFormatPattern)], fields.CreatedDateTime.isInvalid],
+            ["CreatedByUserID", [fields.CreatedByUserID.visible && fields.CreatedByUserID.required ? ew.Validators.required(fields.CreatedByUserID.caption) : null, ew.Validators.integer], fields.CreatedByUserID.isInvalid],
+            ["UpdatedDateTime", [fields.UpdatedDateTime.visible && fields.UpdatedDateTime.required ? ew.Validators.required(fields.UpdatedDateTime.caption) : null, ew.Validators.datetime(fields.UpdatedDateTime.clientFormatPattern)], fields.UpdatedDateTime.isInvalid],
+            ["UpdatedByUserID", [fields.UpdatedByUserID.visible && fields.UpdatedByUserID.required ? ew.Validators.required(fields.UpdatedByUserID.caption) : null, ew.Validators.integer], fields.UpdatedByUserID.isInvalid],
+            ["Perbaikan", [fields.Perbaikan.visible && fields.Perbaikan.required ? ew.Validators.required(fields.Perbaikan.caption) : null], fields.Perbaikan.isInvalid]
+        ])
+
+        // Form_CustomValidate
+        .setCustomValidate(
+            function(fobj) { // DO NOT CHANGE THIS LINE!
+                    // Your custom validation code here, return false if invalid.
+                    return true;
+                }
+        )
+
+        // Use JavaScript validation or not
+        .setValidateRequired(ew.CLIENT_VALIDATE)
+
+        // Dynamic selection lists
+        .setLists({
+            "Status": @Html.Raw(cctv2Add.Status.ToClientList(cctv2Add)),
+            "Perbaikan": @Html.Raw(cctv2Add.Perbaikan.ToClientList(cctv2Add)),
+        })
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+@cctv2Add.ShowPageHeader()
+@cctv2Add.ShowMessages()
+<form name="fCCTV2add" id="fCCTV2add" class="@(cctv2Add.FormClassName)" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (CurrentPage.CheckToken) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="action" id="action" value="insert">
+<input type="hidden" name="modal" value="@ConvertToInt(cctv2Add.IsModal)">
+@if (IsJsonResponse()) {
+<input type="hidden" name="json" value="1">
+}
+<input type="hidden" name="@(cctv2Add.OldKeyName)" value="@Html.Raw(cctv2Add.OldKey)">
+<div class="ew-add-div"><!-- page* -->
+@if (cctv2Add.Code.Visible) { // cctv2Add.Code.Visible (begin)
+    <div id="r_Code" @Html.Raw(cctv2Add.Code.RowAttributes)>
+        <label id="elh_CCTV2_Code" for="x_Code" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.Code.Caption)@Html.Raw(cctv2Add.Code.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.Code.CellAttributes)>
+<span id="el_CCTV2_Code">
+<input type="@(cctv2Add.Code.InputTextType)" name="x_Code" id="x_Code" data-table="CCTV2" data-field="x_Code" value="@Html.Raw(cctv2Add.Code.EditValue)" size="30" maxlength="50" placeholder="@Html.Raw(HtmlEncode(cctv2Add.Code.PlaceHolder))" data-format-pattern="@(cctv2Add.Code.FormatPattern)"@Html.Raw(cctv2Add.Code.EditAttributes) aria-describedby="x_Code_help">
+@Html.Raw(cctv2Add.Code.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add.Code.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.Code.Visible (end) *@
+@if (cctv2Add._Name.Visible) { // cctv2Add._Name.Visible (begin)
+    <div id="r__Name" @Html.Raw(cctv2Add._Name.RowAttributes)>
+        <label id="elh_CCTV2__Name" for="x__Name" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add._Name.Caption)@Html.Raw(cctv2Add._Name.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add._Name.CellAttributes)>
+<span id="el_CCTV2__Name">
+<input type="@(cctv2Add._Name.InputTextType)" name="x__Name" id="x__Name" data-table="CCTV2" data-field="x__Name" value="@Html.Raw(cctv2Add._Name.EditValue)" size="30" maxlength="100" placeholder="@Html.Raw(HtmlEncode(cctv2Add._Name.PlaceHolder))" data-format-pattern="@(cctv2Add._Name.FormatPattern)"@Html.Raw(cctv2Add._Name.EditAttributes) aria-describedby="x__Name_help">
+@Html.Raw(cctv2Add._Name.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add._Name.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* cctv2Add._Name.Visible (end) *@
+@if (cctv2Add.Loc.Visible) { // cctv2Add.Loc.Visible (begin)
+    <div id="r_Loc" @Html.Raw(cctv2Add.Loc.RowAttributes)>
+        <label id="elh_CCTV2_Loc" for="x_Loc" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.Loc.Caption)@Html.Raw(cctv2Add.Loc.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.Loc.CellAttributes)>
+<span id="el_CCTV2_Loc">
+<input type="@(cctv2Add.Loc.InputTextType)" name="x_Loc" id="x_Loc" data-table="CCTV2" data-field="x_Loc" value="@Html.Raw(cctv2Add.Loc.EditValue)" size="30" maxlength="100" placeholder="@Html.Raw(HtmlEncode(cctv2Add.Loc.PlaceHolder))" data-format-pattern="@(cctv2Add.Loc.FormatPattern)"@Html.Raw(cctv2Add.Loc.EditAttributes) aria-describedby="x_Loc_help">
+@Html.Raw(cctv2Add.Loc.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add.Loc.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.Loc.Visible (end) *@
+@if (cctv2Add.Status.Visible) { // cctv2Add.Status.Visible (begin)
+    <div id="r_Status" @Html.Raw(cctv2Add.Status.RowAttributes)>
+        <label id="elh_CCTV2_Status" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.Status.Caption)@Html.Raw(cctv2Add.Status.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.Status.CellAttributes)>
+<span id="el_CCTV2_Status">
+<div class="form-check d-inline-block">
+    <input type="checkbox" class="form-check-input@(cctv2Add.Status.IsInvalidClass)" data-table="CCTV2" data-field="x_Status" data-boolean name="x_Status" id="x_Status" value="1" checked="@ConvertToBool(cctv2Add.Status.CurrentValue)" @Html.Raw(cctv2Add.Status.EditAttributes) aria-describedby="x_Status_help">
+    <div class="invalid-feedback">@Html.Raw(cctv2Add.Status.GetErrorMessage())</div>
+</div>
+@Html.Raw(cctv2Add.Status.GetCustomMessage)
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.Status.Visible (end) *@
+@if (cctv2Add.Incident.Visible) { // cctv2Add.Incident.Visible (begin)
+    <div id="r_Incident" @Html.Raw(cctv2Add.Incident.RowAttributes)>
+        <label id="elh_CCTV2_Incident" for="x_Incident" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.Incident.Caption)@Html.Raw(cctv2Add.Incident.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.Incident.CellAttributes)>
+<span id="el_CCTV2_Incident">
+<input type="@(cctv2Add.Incident.InputTextType)" name="x_Incident" id="x_Incident" data-table="CCTV2" data-field="x_Incident" value="@Html.Raw(cctv2Add.Incident.EditValue)" size="30" placeholder="@Html.Raw(HtmlEncode(cctv2Add.Incident.PlaceHolder))" data-format-pattern="@(cctv2Add.Incident.FormatPattern)"@Html.Raw(cctv2Add.Incident.EditAttributes) aria-describedby="x_Incident_help">
+@Html.Raw(cctv2Add.Incident.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add.Incident.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.Incident.Visible (end) *@
+@if (cctv2Add.CreatedDateTime.Visible) { // cctv2Add.CreatedDateTime.Visible (begin)
+    <div id="r_CreatedDateTime" @Html.Raw(cctv2Add.CreatedDateTime.RowAttributes)>
+        <label id="elh_CCTV2_CreatedDateTime" for="x_CreatedDateTime" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.CreatedDateTime.Caption)@Html.Raw(cctv2Add.CreatedDateTime.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.CreatedDateTime.CellAttributes)>
+<span id="el_CCTV2_CreatedDateTime">
+<input type="@(cctv2Add.CreatedDateTime.InputTextType)" name="x_CreatedDateTime" id="x_CreatedDateTime" data-table="CCTV2" data-field="x_CreatedDateTime" value="@Html.Raw(cctv2Add.CreatedDateTime.EditValue)" placeholder="@Html.Raw(HtmlEncode(cctv2Add.CreatedDateTime.PlaceHolder))" data-format-pattern="@(cctv2Add.CreatedDateTime.FormatPattern)"@Html.Raw(cctv2Add.CreatedDateTime.EditAttributes) aria-describedby="x_CreatedDateTime_help">
+@Html.Raw(cctv2Add.CreatedDateTime.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add.CreatedDateTime.GetErrorMessage())</div>
+@if (!cctv2Add.CreatedDateTime.ReadOnly && !cctv2Add.CreatedDateTime.Disabled && !cctv2Add.CreatedDateTime.EditAttrs.Is("readonly") && !cctv2Add.CreatedDateTime.EditAttrs.Is("disabled")) {
+<script>
+loadjs.ready(["fCCTV2add", "datetimepicker"], function () {
+    let format = "@Html.Raw(DateFormat(0))", // DN
+        options = {
+                localization: {
+                    locale: ew.LANGUAGE_ID + "-u-nu-" + ew.getNumberingSystem(),
+                    hourCycle: format.match(/H/) ? "h24" : "h12",
+                    format,
+                    ...ew.language.phrase("datetimepicker")
+                },
+                display: {
+                    icons: {
+                        previous: ew.IS_RTL ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left",
+                        next: ew.IS_RTL ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right"
+                    },
+                    components: {
+                        hours: !!format.match(/h/i),
+                        minutes: !!format.match(/m/),
+                        seconds: !!format.match(/s/i)
+                    },
+                    theme: ew.isDark() ? "dark" : "auto"
+                }
+            };
+    ew.createDateTimePicker("fCCTV2add", "x_CreatedDateTime", ew.deepAssign({"useCurrent":false,"display":{"sideBySide":false}}, options));
+});
+</script>
+}
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.CreatedDateTime.Visible (end) *@
+@if (cctv2Add.CreatedByUserID.Visible) { // cctv2Add.CreatedByUserID.Visible (begin)
+    <div id="r_CreatedByUserID" @Html.Raw(cctv2Add.CreatedByUserID.RowAttributes)>
+        <label id="elh_CCTV2_CreatedByUserID" for="x_CreatedByUserID" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.CreatedByUserID.Caption)@Html.Raw(cctv2Add.CreatedByUserID.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.CreatedByUserID.CellAttributes)>
+<span id="el_CCTV2_CreatedByUserID">
+<input type="@(cctv2Add.CreatedByUserID.InputTextType)" name="x_CreatedByUserID" id="x_CreatedByUserID" data-table="CCTV2" data-field="x_CreatedByUserID" value="@Html.Raw(cctv2Add.CreatedByUserID.EditValue)" size="30" placeholder="@Html.Raw(HtmlEncode(cctv2Add.CreatedByUserID.PlaceHolder))" data-format-pattern="@(cctv2Add.CreatedByUserID.FormatPattern)"@Html.Raw(cctv2Add.CreatedByUserID.EditAttributes) aria-describedby="x_CreatedByUserID_help">
+@Html.Raw(cctv2Add.CreatedByUserID.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add.CreatedByUserID.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.CreatedByUserID.Visible (end) *@
+@if (cctv2Add.UpdatedDateTime.Visible) { // cctv2Add.UpdatedDateTime.Visible (begin)
+    <div id="r_UpdatedDateTime" @Html.Raw(cctv2Add.UpdatedDateTime.RowAttributes)>
+        <label id="elh_CCTV2_UpdatedDateTime" for="x_UpdatedDateTime" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.UpdatedDateTime.Caption)@Html.Raw(cctv2Add.UpdatedDateTime.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.UpdatedDateTime.CellAttributes)>
+<span id="el_CCTV2_UpdatedDateTime">
+<input type="@(cctv2Add.UpdatedDateTime.InputTextType)" name="x_UpdatedDateTime" id="x_UpdatedDateTime" data-table="CCTV2" data-field="x_UpdatedDateTime" value="@Html.Raw(cctv2Add.UpdatedDateTime.EditValue)" placeholder="@Html.Raw(HtmlEncode(cctv2Add.UpdatedDateTime.PlaceHolder))" data-format-pattern="@(cctv2Add.UpdatedDateTime.FormatPattern)"@Html.Raw(cctv2Add.UpdatedDateTime.EditAttributes) aria-describedby="x_UpdatedDateTime_help">
+@Html.Raw(cctv2Add.UpdatedDateTime.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add.UpdatedDateTime.GetErrorMessage())</div>
+@if (!cctv2Add.UpdatedDateTime.ReadOnly && !cctv2Add.UpdatedDateTime.Disabled && !cctv2Add.UpdatedDateTime.EditAttrs.Is("readonly") && !cctv2Add.UpdatedDateTime.EditAttrs.Is("disabled")) {
+<script>
+loadjs.ready(["fCCTV2add", "datetimepicker"], function () {
+    let format = "@Html.Raw(DateFormat(0))", // DN
+        options = {
+                localization: {
+                    locale: ew.LANGUAGE_ID + "-u-nu-" + ew.getNumberingSystem(),
+                    hourCycle: format.match(/H/) ? "h24" : "h12",
+                    format,
+                    ...ew.language.phrase("datetimepicker")
+                },
+                display: {
+                    icons: {
+                        previous: ew.IS_RTL ? "fa-solid fa-chevron-right" : "fa-solid fa-chevron-left",
+                        next: ew.IS_RTL ? "fa-solid fa-chevron-left" : "fa-solid fa-chevron-right"
+                    },
+                    components: {
+                        hours: !!format.match(/h/i),
+                        minutes: !!format.match(/m/),
+                        seconds: !!format.match(/s/i)
+                    },
+                    theme: ew.isDark() ? "dark" : "auto"
+                }
+            };
+    ew.createDateTimePicker("fCCTV2add", "x_UpdatedDateTime", ew.deepAssign({"useCurrent":false,"display":{"sideBySide":false}}, options));
+});
+</script>
+}
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.UpdatedDateTime.Visible (end) *@
+@if (cctv2Add.UpdatedByUserID.Visible) { // cctv2Add.UpdatedByUserID.Visible (begin)
+    <div id="r_UpdatedByUserID" @Html.Raw(cctv2Add.UpdatedByUserID.RowAttributes)>
+        <label id="elh_CCTV2_UpdatedByUserID" for="x_UpdatedByUserID" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.UpdatedByUserID.Caption)@Html.Raw(cctv2Add.UpdatedByUserID.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.UpdatedByUserID.CellAttributes)>
+<span id="el_CCTV2_UpdatedByUserID">
+<input type="@(cctv2Add.UpdatedByUserID.InputTextType)" name="x_UpdatedByUserID" id="x_UpdatedByUserID" data-table="CCTV2" data-field="x_UpdatedByUserID" value="@Html.Raw(cctv2Add.UpdatedByUserID.EditValue)" size="30" placeholder="@Html.Raw(HtmlEncode(cctv2Add.UpdatedByUserID.PlaceHolder))" data-format-pattern="@(cctv2Add.UpdatedByUserID.FormatPattern)"@Html.Raw(cctv2Add.UpdatedByUserID.EditAttributes) aria-describedby="x_UpdatedByUserID_help">
+@Html.Raw(cctv2Add.UpdatedByUserID.GetCustomMessage)
+<div class="invalid-feedback">@Html.Raw(cctv2Add.UpdatedByUserID.GetErrorMessage())</div>
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.UpdatedByUserID.Visible (end) *@
+@if (cctv2Add.Perbaikan.Visible) { // cctv2Add.Perbaikan.Visible (begin)
+    <div id="r_Perbaikan" @Html.Raw(cctv2Add.Perbaikan.RowAttributes)>
+        <label id="elh_CCTV2_Perbaikan" class="@(cctv2Add.LeftColumnClass)">@Html.Raw(cctv2Add.Perbaikan.Caption)@Html.Raw(cctv2Add.Perbaikan.Required ? Language.Phrase("FieldRequiredIndicator") : "")</label>
+        <div class="@(cctv2Add.RightColumnClass)"><div @Html.Raw(cctv2Add.Perbaikan.CellAttributes)>
+<span id="el_CCTV2_Perbaikan">
+<div class="form-check d-inline-block">
+    <input type="checkbox" class="form-check-input@(cctv2Add.Perbaikan.IsInvalidClass)" data-table="CCTV2" data-field="x_Perbaikan" data-boolean name="x_Perbaikan" id="x_Perbaikan" value="1" checked="@ConvertToBool(cctv2Add.Perbaikan.CurrentValue)" @Html.Raw(cctv2Add.Perbaikan.EditAttributes) aria-describedby="x_Perbaikan_help">
+    <div class="invalid-feedback">@Html.Raw(cctv2Add.Perbaikan.GetErrorMessage())</div>
+</div>
+@Html.Raw(cctv2Add.Perbaikan.GetCustomMessage)
+</span>
+</div></div>
+    </div>
+} @* cctv2Add.Perbaikan.Visible (end) *@
+</div><!-- /page* -->
+@{ cctv2Add.CloseRecordset(); }
+@Html.Raw(cctv2Add.IsModal ? "<template class=\"ew-modal-buttons\">" : "<div class=\"row ew-buttons\">")<!-- buttons .row -->
+    <div class="@(cctv2Add.OffsetColumnClass)"><!-- buttons offset -->
+    <button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit" form="fCCTV2add">@Html.Raw(Language.Phrase("AddBtn"))</button>
+@if (IsJsonResponse()) {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-bs-dismiss="modal">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+} else {
+    <button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" form="fCCTV2add" data-href="@AppPath(cctv2Add.ReturnUrl)">@Html.Raw(Language.Phrase("CancelBtn"))</button>
+}
+    </div><!-- /buttons offset -->
+@Html.Raw(cctv2Add.IsModal ? "</template>" : "</div>")<!-- /buttons .row -->
+</form>
+@cctv2Add.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("CCTV2");
+});
+</script>
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>

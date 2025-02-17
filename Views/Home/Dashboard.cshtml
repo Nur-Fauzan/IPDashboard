@@ -1,0 +1,362 @@
+@{
+    // View
+    View = this;
+
+    Layout = "_Layout";
+
+    // Local variables (Temp data)
+    #pragma warning disable 168
+    string? sqlWrk, filterWrk, whereWrk, curVal, dispVal;
+    List<Dictionary<string, object>>? rswrk;
+    string[]? arWrk;
+    List<object?>? listWrk;
+    object? guidWrk;
+    Func<string>? lookupFilter;
+    #pragma warning restore 168
+}
+@dashboard.ShowMessages()
+<style>
+    /* .content-header {
+            display: none;
+        } */
+    .card-box {
+        position: relative;
+        color: #fff;
+        padding: 20px 10px 40px;
+        margin: 16px 0px;
+    }
+
+    .card-box:hover {
+        text-decoration: none;
+        color: #f1f1f1;
+    }
+
+    .card-box:hover .icon i {
+        font-size: 100px;
+        transition: 1s;
+        -webkit-transition: 1s;
+    }
+
+    .card-box .inner {
+        padding: 5px 10px 0 10px;
+    }
+
+    .card-box h3 {
+        font-size: 27px;
+        font-weight: bold;
+        margin: 0 0 8px 0;
+        white-space: nowrap;
+        padding: 0;
+        text-align: left;
+    }
+
+    .card-box p {
+        font-size: 15px;
+    }
+
+    .card-box .icon {
+        position: absolute;
+        top: auto;
+        bottom: 5px;
+        right: 10px;
+        z-index: 0;
+        font-size: 72px;
+        color: rgba(0, 0, 0, 0.15);
+    }
+
+    .card-box .card-box-footer {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        text-align: center;
+        padding: 5px 10px 5px 10px;
+        color: rgba(255, 255, 255, 0.8);
+        background: rgba(0, 0, 0, 0.1);
+        width: 100%;
+        text-decoration: none;
+    }
+
+    .card-box:hover .card-box-footer {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .bg-blue {
+        background-color: #08adf0 !important;
+    }
+
+    .bg-green {
+        background-color: #8eb148 !important;
+    }
+
+    .bg-orange {
+        background-color: #f39c12 !important;
+    }
+
+    .bg-red {
+        background-color: #d9534f !important;
+    }
+
+    .bg-grey {
+        background-color: #BBBBBB !important;
+    }
+
+    .bg-dark-grey {
+        background-color: #888888 !important;
+    }
+
+    .bg-yellow {
+        background-color: #e2b501 !important;
+    }
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+        display: flex;
+    }
+    .card h5 {
+        margin: 0;
+        display: inline;
+    }
+    .confirmButton {
+        font-size: 18px;
+        border-radius: 4px;
+        background-color: #04AA6D;
+        color: white;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    .card.completed h5 {
+        text-decoration: line-through;
+    }
+    .checkBox {
+        margin-right: 10px;
+    }
+    .card-content {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+    .grid-item {
+        padding: 20px;
+        font-size: 18px;
+        text-align: center;
+    }
+    .todo-item {
+        display: flex;
+        align-items: center;
+    }
+    .todo-item span {
+        margin: 0;
+        display: inline;
+        cursor: move;
+    }
+    .completed span {
+        text-decoration: line-through;
+        cursor: move;
+    }
+</style>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@{
+    var total = 0;
+    var aktif = 0;
+    var inaktif = 0;
+}
+@model List<IpPortResult>
+<div id="dashContainer" class="">
+    <!-- <div class="container mt-5">
+        <h1>IP/Port Reachability</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">IP Address</th>
+                    <th scope="col">Port</th>
+                    <th scope="col">Reachable</th>
+                </tr>
+            </thead>
+            <tbody> -->
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var result in Model)
+                    {
+                        <!-- <tr>
+                            <td>@result.Ip</td>
+                            <td>@result.Port</td>
+                            <td>@(result.IsReachable ? "True" : "False")</td>
+                        </tr> -->
+                        @if (result.IsReachable)
+                        {
+                            aktif++;
+                        }
+                        else 
+                        {
+                            inaktif++;
+                        }
+                        total++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3">No data available</td>
+                    </tr>
+                }
+            <!-- </tbody>
+        </table> -->
+    </div>    
+    <div class="row">
+        <!-- total active cctv -->
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+            <div class="card-box bg-green">
+                <div class="inner">
+                    <h3 id="totalactiveCCTV">@Html.Raw(aktif)/@Html.Raw(total)</h3>
+                    <p>@(CurrentLanguage == "en-US" ? "Active CCTV" : "CCTV Aktif")</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="icon">
+                        <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- total inactive cctv -->
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 col-xxl-3">
+            <div class="card-box bg-red">
+                <div class="inner">
+                    <h3 id="totalInactiveCCTV">@Html.Raw(inaktif)/@Html.Raw(total)</h3>
+                    <p>@(CurrentLanguage == "en-US" ? "Inactive CCTV" : "CCTV Inaktif")</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="icon">
+                        <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="row">
+        <div style="width: 400px; height: 400px;" class="col">
+            <canvas id="myDoughnutChart"></canvas>
+        </div>
+        <div class="col grid-container">
+            <div class="card grid-item">
+                <h2>To-Do List</h2>
+                <hr>
+                <div id="todoList">
+                    @foreach (var result in Model)
+                    {
+                        @if (!result.IsReachable) {
+                            <div class="todo-item" style="margin-bottom: 15px;" data-id="@result.Ip:@result.Port">
+                                <input type="checkbox" class="checkBox" />
+                                <span>@result.Ip (@result.Port)</span>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="card-buttons">
+                    <button class="confirmButton">Confirm</button>
+                </div>
+            </div>
+            <div class="grid-item"></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#todoList").sortable({
+            update: function(event, ui) {
+                var order = $(this).sortable('toArray', { attribute: 'data-id' });
+                console.log("New order:", order);
+                // Optionally send the new order to the server
+            }
+        });
+
+        $('.checkBox').change(function() {
+            var todoItem = $(this).closest('.todo-item');
+            if (this.checked) {
+                todoItem.addClass('completed');
+            } else {
+                todoItem.removeClass('completed');
+            }
+        });
+
+        $('.confirmButton').click(function() {
+            /* var checkedItems = [];
+            $('#todoList .checkBox:checked').each(function() {
+                var cctvId = $(this).closest('.todo-item').data('id');
+                checkedItems.push(cctvId);
+            });
+
+            if (confirm("Are you sure you want to mark the selected items as done?")) {
+                $.ajax({
+                    url: '@Url.Action("UpdatePerbaikan", "CCTV")',
+                    type: 'POST',
+                    data: JSON.stringify({ ids: checkedItems }),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function(response) {
+                        if (response.success) {
+                            $('#todoList .checkBox:checked').closest('.todo-item').remove();
+                        } else {
+                            alert('Error updating items.');
+                        }
+                    },
+                    error: function() {
+                        alert('Error updating items.');
+                    }
+                });
+            } */
+            location.reload();
+        });
+    });
+    var ctx = document.getElementById('myDoughnutChart').getContext('2d');
+    var myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Active CCTV', 'Inactive CCTV'],
+            datasets: [{
+                data: [@aktif, @inaktif],
+                backgroundColor: [
+                    'rgba(121, 227, 100, 0.2)', // Active CCTV color
+                    'rgba(255, 99, 132, 0.2)'  // Inactive CCTV color
+                ],
+                borderColor: [
+                    'rgba(121, 227, 100, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '50%',
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+@Html.Raw(GetDebugMessage())

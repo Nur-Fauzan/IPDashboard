@@ -1,0 +1,11 @@
+{
+    "name": "defa",
+    "version": "20.7.0",
+    "description": "defa",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "private": true,
+    "dependencies": {},
+    "engines": {
+        "node": ">=16"
+    }
+}

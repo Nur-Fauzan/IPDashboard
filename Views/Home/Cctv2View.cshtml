@@ -1,0 +1,201 @@
+@{
+    // View
+    View = this;
+
+    // Check action result
+    if (cctv2View.ActionResult is EmptyResult) { // Terminate page
+        return;
+    }
+
+    // Layout
+    if (!cctv2View.UseLayout) // UseLayout = false // DN
+        Layout = "";
+    else
+        Layout = "_Layout";
+
+    // Local variables (Temp data)
+    #pragma warning disable 168
+    string? sqlWrk, filterWrk, whereWrk, curVal, dispVal;
+    List<Dictionary<string, object>>? rswrk;
+    string[]? arWrk;
+    List<object?>? listWrk;
+    object? guidWrk;
+    Func<string>? lookupFilter;
+    #pragma warning restore 168
+}
+@if (!cctv2View.IsExport()) {
+<script>
+loadjs.ready("head", function() {
+    // Write your client script here, no need to add script tags.
+});
+</script>
+}
+@if (!cctv2View.IsExport()) {
+<div class="btn-toolbar ew-toolbar">
+    @cctv2View.ExportOptions.RenderBody()
+    @cctv2View.OtherOptions.RenderBody()
+</div>
+}
+@cctv2View.ShowPageHeader()
+@cctv2View.ShowMessages()
+<main class="view">
+<form name="fCCTV2view" id="fCCTV2view" class="ew-form ew-view-form overlay-wrapper" action="@AppPath(CurrentPageName())" method="post" novalidate autocomplete="off">
+@if (!cctv2View.IsExport()) {
+<script>
+var currentTable = @Html.Raw(ConvertToJson(cctv2View.ToClientVar()));
+ew.deepAssign(ew.vars, { tables: { CCTV2: currentTable } });
+var currentPageID = ew.PAGE_ID = "view";
+var currentForm;
+var fCCTV2view;
+loadjs.ready(["wrapper", "head"], function () {
+    let $ = jQuery;
+    let fields = currentTable.fields;
+
+    // Form object
+    let form = new ew.FormBuilder()
+        .setId("fCCTV2view")
+        .setPageId("view")
+        .build();
+    window[form.id] = form;
+    currentForm = form;
+    loadjs.done(form.id);
+});
+</script>
+}
+@if (CurrentPage.CheckToken) {
+    <input type="hidden" name="@Config.TokenNameKey" value="@Config.TokenName"><!-- CSRF token name -->
+    @Html.AntiForgeryToken()
+}
+<input type="hidden" name="modal" value="@ConvertToInt(cctv2View.IsModal)">
+<table class="@(cctv2View.TableClass)">
+@if (cctv2View.ID.Visible) { // cctv2View.ID.Visible (begin)
+    <tr id="r_ID" @Html.Raw(cctv2View.ID.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_ID">@Html.Raw(cctv2View.ID.Caption)</span></td>
+        <td data-name="ID" @Html.Raw(cctv2View.ID.CellAttributes)>
+<span id="el_CCTV2_ID">
+<span @Html.Raw(cctv2View.ID.ViewAttributes)>
+@Html.Raw(cctv2View.ID.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.ID.Visible (end) *@
+@if (cctv2View.Code.Visible) { // cctv2View.Code.Visible (begin)
+    <tr id="r_Code" @Html.Raw(cctv2View.Code.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_Code">@Html.Raw(cctv2View.Code.Caption)</span></td>
+        <td data-name="Code" @Html.Raw(cctv2View.Code.CellAttributes)>
+<span id="el_CCTV2_Code">
+<span @Html.Raw(cctv2View.Code.ViewAttributes)>
+@Html.Raw(cctv2View.Code.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.Code.Visible (end) *@
+@if (cctv2View._Name.Visible) { // cctv2View._Name.Visible (begin)
+    <tr id="r__Name" @Html.Raw(cctv2View._Name.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2__Name">@Html.Raw(cctv2View._Name.Caption)</span></td>
+        <td data-name="_Name" @Html.Raw(cctv2View._Name.CellAttributes)>
+<span id="el_CCTV2__Name">
+<span @Html.Raw(cctv2View._Name.ViewAttributes)>
+@Html.Raw(cctv2View._Name.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View._Name.Visible (end) *@
+@if (cctv2View.Loc.Visible) { // cctv2View.Loc.Visible (begin)
+    <tr id="r_Loc" @Html.Raw(cctv2View.Loc.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_Loc">@Html.Raw(cctv2View.Loc.Caption)</span></td>
+        <td data-name="Loc" @Html.Raw(cctv2View.Loc.CellAttributes)>
+<span id="el_CCTV2_Loc">
+<span @Html.Raw(cctv2View.Loc.ViewAttributes)>
+@Html.Raw(cctv2View.Loc.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.Loc.Visible (end) *@
+@if (cctv2View.Status.Visible) { // cctv2View.Status.Visible (begin)
+    <tr id="r_Status" @Html.Raw(cctv2View.Status.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_Status">@Html.Raw(cctv2View.Status.Caption)</span></td>
+        <td data-name="Status" @Html.Raw(cctv2View.Status.CellAttributes)>
+<span id="el_CCTV2_Status">
+<span @Html.Raw(cctv2View.Status.ViewAttributes)>
+<div class="form-check d-inline-block">
+    <input type="checkbox" id="x_Status_@(cctv2View.RowCount)" class="form-check-input" value="@(cctv2View.Status.GetViewValue())" disabled checked="@(ConvertToBool(cctv2View.Status.CurrentValue))">
+    <label class="form-check-label" for="x_Status_@(cctv2View.RowCount)"></label>
+</div></span>
+</span></td>
+    </tr>
+} @* cctv2View.Status.Visible (end) *@
+@if (cctv2View.Incident.Visible) { // cctv2View.Incident.Visible (begin)
+    <tr id="r_Incident" @Html.Raw(cctv2View.Incident.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_Incident">@Html.Raw(cctv2View.Incident.Caption)</span></td>
+        <td data-name="Incident" @Html.Raw(cctv2View.Incident.CellAttributes)>
+<span id="el_CCTV2_Incident">
+<span @Html.Raw(cctv2View.Incident.ViewAttributes)>
+@Html.Raw(cctv2View.Incident.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.Incident.Visible (end) *@
+@if (cctv2View.CreatedDateTime.Visible) { // cctv2View.CreatedDateTime.Visible (begin)
+    <tr id="r_CreatedDateTime" @Html.Raw(cctv2View.CreatedDateTime.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_CreatedDateTime">@Html.Raw(cctv2View.CreatedDateTime.Caption)</span></td>
+        <td data-name="CreatedDateTime" @Html.Raw(cctv2View.CreatedDateTime.CellAttributes)>
+<span id="el_CCTV2_CreatedDateTime">
+<span @Html.Raw(cctv2View.CreatedDateTime.ViewAttributes)>
+@Html.Raw(cctv2View.CreatedDateTime.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.CreatedDateTime.Visible (end) *@
+@if (cctv2View.CreatedByUserID.Visible) { // cctv2View.CreatedByUserID.Visible (begin)
+    <tr id="r_CreatedByUserID" @Html.Raw(cctv2View.CreatedByUserID.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_CreatedByUserID">@Html.Raw(cctv2View.CreatedByUserID.Caption)</span></td>
+        <td data-name="CreatedByUserID" @Html.Raw(cctv2View.CreatedByUserID.CellAttributes)>
+<span id="el_CCTV2_CreatedByUserID">
+<span @Html.Raw(cctv2View.CreatedByUserID.ViewAttributes)>
+@Html.Raw(cctv2View.CreatedByUserID.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.CreatedByUserID.Visible (end) *@
+@if (cctv2View.UpdatedDateTime.Visible) { // cctv2View.UpdatedDateTime.Visible (begin)
+    <tr id="r_UpdatedDateTime" @Html.Raw(cctv2View.UpdatedDateTime.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_UpdatedDateTime">@Html.Raw(cctv2View.UpdatedDateTime.Caption)</span></td>
+        <td data-name="UpdatedDateTime" @Html.Raw(cctv2View.UpdatedDateTime.CellAttributes)>
+<span id="el_CCTV2_UpdatedDateTime">
+<span @Html.Raw(cctv2View.UpdatedDateTime.ViewAttributes)>
+@Html.Raw(cctv2View.UpdatedDateTime.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.UpdatedDateTime.Visible (end) *@
+@if (cctv2View.UpdatedByUserID.Visible) { // cctv2View.UpdatedByUserID.Visible (begin)
+    <tr id="r_UpdatedByUserID" @Html.Raw(cctv2View.UpdatedByUserID.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_UpdatedByUserID">@Html.Raw(cctv2View.UpdatedByUserID.Caption)</span></td>
+        <td data-name="UpdatedByUserID" @Html.Raw(cctv2View.UpdatedByUserID.CellAttributes)>
+<span id="el_CCTV2_UpdatedByUserID">
+<span @Html.Raw(cctv2View.UpdatedByUserID.ViewAttributes)>
+@Html.Raw(cctv2View.UpdatedByUserID.GetViewValue())</span>
+</span></td>
+    </tr>
+} @* cctv2View.UpdatedByUserID.Visible (end) *@
+@if (cctv2View.Perbaikan.Visible) { // cctv2View.Perbaikan.Visible (begin)
+    <tr id="r_Perbaikan" @Html.Raw(cctv2View.Perbaikan.RowAttributes)>
+        <td class="@(cctv2View.TableLeftColumnClass)"><span id="elh_CCTV2_Perbaikan">@Html.Raw(cctv2View.Perbaikan.Caption)</span></td>
+        <td data-name="Perbaikan" @Html.Raw(cctv2View.Perbaikan.CellAttributes)>
+<span id="el_CCTV2_Perbaikan">
+<span @Html.Raw(cctv2View.Perbaikan.ViewAttributes)>
+<div class="form-check d-inline-block">
+    <input type="checkbox" id="x_Perbaikan_@(cctv2View.RowCount)" class="form-check-input" value="@(cctv2View.Perbaikan.GetViewValue())" disabled checked="@(ConvertToBool(cctv2View.Perbaikan.CurrentValue))">
+    <label class="form-check-label" for="x_Perbaikan_@(cctv2View.RowCount)"></label>
+</div></span>
+</span></td>
+    </tr>
+} @* cctv2View.Perbaikan.Visible (end) *@
+</table>
+@{ cctv2View.CloseRecordset(); }
+</form>
+</main>
+@cctv2View.ShowPageFooter()
+@Html.Raw(GetDebugMessage())
+@ElapsedTime()
+@if (!cctv2View.IsExport()) {
+<script>
+loadjs.ready("load", function() {
+    // Write your table-specific startup script here
+    // document.write("page loaded");
+});
+</script>
+}

@@ -1,0 +1,789 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\defa\\wwwroot\\adminlte3\\css\\adminlte.css",
+      "PackagePath": "staticwebassets\\adminlte3\\css\\adminlte.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\adminlte3\\css\\adminlte.min.css",
+      "PackagePath": "staticwebassets\\adminlte3\\css\\adminlte.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\adminlte3\\css\\adminlte.min.css.map",
+      "PackagePath": "staticwebassets\\adminlte3\\css\\adminlte.min.css.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\adminlte3\\js\\adminlte.js",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\adminlte3\\js\\adminlte.js.map",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\adminlte3\\js\\adminlte.min.js",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\adminlte3\\js\\adminlte.min.js.map",
+      "PackagePath": "staticwebassets\\adminlte3\\js\\adminlte.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\bootstrap5\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\bootstrap5\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\bootstrap5\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\bootstrap5\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\bootstrap5\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\colorbox.css",
+      "PackagePath": "staticwebassets\\colorbox\\colorbox.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\images\\border.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\border.png"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\images\\controls.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\controls.png"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\images\\loading.gif",
+      "PackagePath": "staticwebassets\\colorbox\\images\\loading.gif"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\images\\loading_background.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\loading_background.png"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\images\\overlay.png",
+      "PackagePath": "staticwebassets\\colorbox\\images\\overlay.png"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\jquery.colorbox-min.js",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox-min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\jquery.colorbox.js",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\jquery.colorbox.min.js",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\colorbox\\jquery.colorbox.min.js.map",
+      "PackagePath": "staticwebassets\\colorbox\\jquery.colorbox.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\OverlayScrollbars.css",
+      "PackagePath": "staticwebassets\\css\\OverlayScrollbars.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\OverlayScrollbars.min.css",
+      "PackagePath": "staticwebassets\\css\\OverlayScrollbars.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\cropper.css",
+      "PackagePath": "staticwebassets\\css\\cropper.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\cropper.min.css",
+      "PackagePath": "staticwebassets\\css\\cropper.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\defa.css",
+      "PackagePath": "staticwebassets\\css\\defa.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\defa.min.css",
+      "PackagePath": "staticwebassets\\css\\defa.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\defa.min.css.map",
+      "PackagePath": "staticwebassets\\css\\defa.min.css.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\defa.scss",
+      "PackagePath": "staticwebassets\\css\\defa.scss"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\fonts\\ew.eot",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.eot"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\fonts\\ew.svg",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.svg"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\fonts\\ew.ttf",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.ttf"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\fonts\\ew.woff",
+      "PackagePath": "staticwebassets\\css\\fonts\\ew.woff"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\jquery.fileupload-ui.css",
+      "PackagePath": "staticwebassets\\css\\jquery.fileupload-ui.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\jquery.fileupload.css",
+      "PackagePath": "staticwebassets\\css\\jquery.fileupload.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\query-builder.css",
+      "PackagePath": "staticwebassets\\css\\query-builder.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\query-builder.min.css",
+      "PackagePath": "staticwebassets\\css\\query-builder.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\query-builder.min.css.map",
+      "PackagePath": "staticwebassets\\css\\query-builder.min.css.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\query-builder.scss",
+      "PackagePath": "staticwebassets\\css\\query-builder.scss"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\select2-bootstrap5.css",
+      "PackagePath": "staticwebassets\\css\\select2-bootstrap5.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\select2-bootstrap5.min.css",
+      "PackagePath": "staticwebassets\\css\\select2-bootstrap5.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\select2.css",
+      "PackagePath": "staticwebassets\\css\\select2.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\select2.min.css",
+      "PackagePath": "staticwebassets\\css\\select2.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\sweetalert2.css",
+      "PackagePath": "staticwebassets\\css\\sweetalert2.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\sweetalert2.min.css",
+      "PackagePath": "staticwebassets\\css\\sweetalert2.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tabulator_bootstrap5.css",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tabulator_bootstrap5.min.css",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tabulator_bootstrap5.min.css.map",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.min.css.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tabulator_bootstrap5.scss",
+      "PackagePath": "staticwebassets\\css\\tabulator_bootstrap5.scss"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tempus-dominus.css",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tempus-dominus.min.css",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tempus-dominus.min.css.map",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.min.css.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\css\\tempus-dominus.scss",
+      "PackagePath": "staticwebassets\\css\\tempus-dominus.scss"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\html\\changepassword.html",
+      "PackagePath": "staticwebassets\\html\\changepassword.html"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\html\\notify.html",
+      "PackagePath": "staticwebassets\\html\\notify.html"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\html\\onetimepassword.html",
+      "PackagePath": "staticwebassets\\html\\onetimepassword.html"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\html\\resetpassword.html",
+      "PackagePath": "staticwebassets\\html\\resetpassword.html"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\images\\2560px-Pertamina_Logo.svg.png",
+      "PackagePath": "staticwebassets\\images\\2560px-Pertamina_Logo.svg.png"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\Mobile_Detect.json",
+      "PackagePath": "staticwebassets\\js\\Mobile_Detect.json"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chart.js",
+      "PackagePath": "staticwebassets\\js\\chart.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chart.min.js",
+      "PackagePath": "staticwebassets\\js\\chart.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-adapter-luxon.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-adapter-luxon.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-adapter-luxon.min.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-adapter-luxon.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-adapter-luxon.min.js.map",
+      "PackagePath": "staticwebassets\\js\\chartjs-adapter-luxon.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-plugin-annotation.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-annotation.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-plugin-annotation.min.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-annotation.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-plugin-annotation.min.js.map",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-annotation.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-plugin-datalabels.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-datalabels.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-plugin-datalabels.min.js",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-datalabels.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\chartjs-plugin-datalabels.min.js.map",
+      "PackagePath": "staticwebassets\\js\\chartjs-plugin-datalabels.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\cropper.js",
+      "PackagePath": "staticwebassets\\js\\cropper.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\cropper.min.js",
+      "PackagePath": "staticwebassets\\js\\cropper.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\element-internals-polyfill.js",
+      "PackagePath": "staticwebassets\\js\\element-internals-polyfill.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\element-internals-polyfill.min.js",
+      "PackagePath": "staticwebassets\\js\\element-internals-polyfill.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\element-internals-polyfill.min.js.map",
+      "PackagePath": "staticwebassets\\js\\element-internals-polyfill.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ew.js",
+      "PackagePath": "staticwebassets\\js\\ew.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ew.min.js",
+      "PackagePath": "staticwebassets\\js\\ew.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ew.min.js.map",
+      "PackagePath": "staticwebassets\\js\\ew.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ewcore.js",
+      "PackagePath": "staticwebassets\\js\\ewcore.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ewcore.min.js",
+      "PackagePath": "staticwebassets\\js\\ewcore.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ewcore.min.js.map",
+      "PackagePath": "staticwebassets\\js\\ewcore.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ewdatetimepicker.js",
+      "PackagePath": "staticwebassets\\js\\ewdatetimepicker.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ewdatetimepicker.min.js",
+      "PackagePath": "staticwebassets\\js\\ewdatetimepicker.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\ewdatetimepicker.min.js.map",
+      "PackagePath": "staticwebassets\\js\\ewdatetimepicker.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\eweditor.js",
+      "PackagePath": "staticwebassets\\js\\eweditor.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jquery-ui.js",
+      "PackagePath": "staticwebassets\\js\\jquery-ui.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery-ui.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jquery.js",
+      "PackagePath": "staticwebassets\\js\\jquery.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jquery.min.map",
+      "PackagePath": "staticwebassets\\js\\jquery.min.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jqueryfileupload.js",
+      "PackagePath": "staticwebassets\\js\\jqueryfileupload.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jqueryfileupload.min.js",
+      "PackagePath": "staticwebassets\\js\\jqueryfileupload.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jqueryfileupload.min.js.map",
+      "PackagePath": "staticwebassets\\js\\jqueryfileupload.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jsrender.js",
+      "PackagePath": "staticwebassets\\js\\jsrender.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jsrender.min.js",
+      "PackagePath": "staticwebassets\\js\\jsrender.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\jsrender.min.js.map",
+      "PackagePath": "staticwebassets\\js\\jsrender.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\load-image.all.js",
+      "PackagePath": "staticwebassets\\js\\load-image.all.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\load-image.all.min.js",
+      "PackagePath": "staticwebassets\\js\\load-image.all.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\load-image.all.min.js.map",
+      "PackagePath": "staticwebassets\\js\\load-image.all.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\locales.json",
+      "PackagePath": "staticwebassets\\js\\locales.json"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\luxon.js",
+      "PackagePath": "staticwebassets\\js\\luxon.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\luxon.js.map",
+      "PackagePath": "staticwebassets\\js\\luxon.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\luxon.min.js",
+      "PackagePath": "staticwebassets\\js\\luxon.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\luxon.min.js.map",
+      "PackagePath": "staticwebassets\\js\\luxon.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\mobile-detect.js",
+      "PackagePath": "staticwebassets\\js\\mobile-detect.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\mobile-detect.min.js",
+      "PackagePath": "staticwebassets\\js\\mobile-detect.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\overlayscrollbars.browser.es6.js",
+      "PackagePath": "staticwebassets\\js\\overlayscrollbars.browser.es6.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\overlayscrollbars.browser.es6.js.map",
+      "PackagePath": "staticwebassets\\js\\overlayscrollbars.browser.es6.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\overlayscrollbars.browser.es6.min.js",
+      "PackagePath": "staticwebassets\\js\\overlayscrollbars.browser.es6.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pGenerator.jquery.js",
+      "PackagePath": "staticwebassets\\js\\pGenerator.jquery.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pGenerator.jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\pGenerator.jquery.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pGenerator.jquery.min.js.map",
+      "PackagePath": "staticwebassets\\js\\pGenerator.jquery.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pStrength.jquery.js",
+      "PackagePath": "staticwebassets\\js\\pStrength.jquery.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pStrength.jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\pStrength.jquery.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pStrength.jquery.min.js.map",
+      "PackagePath": "staticwebassets\\js\\pStrength.jquery.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pace.js",
+      "PackagePath": "staticwebassets\\js\\pace.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pace.min.js",
+      "PackagePath": "staticwebassets\\js\\pace.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pdfobject.js",
+      "PackagePath": "staticwebassets\\js\\pdfobject.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\pdfobject.min.js",
+      "PackagePath": "staticwebassets\\js\\pdfobject.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\popper.js",
+      "PackagePath": "staticwebassets\\js\\popper.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\popper.js.map",
+      "PackagePath": "staticwebassets\\js\\popper.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\popper.min.js.map",
+      "PackagePath": "staticwebassets\\js\\popper.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\purify.js",
+      "PackagePath": "staticwebassets\\js\\purify.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\purify.js.map",
+      "PackagePath": "staticwebassets\\js\\purify.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\purify.min.js",
+      "PackagePath": "staticwebassets\\js\\purify.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\purify.min.js.map",
+      "PackagePath": "staticwebassets\\js\\purify.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\query-builder.js",
+      "PackagePath": "staticwebassets\\js\\query-builder.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\query-builder.min.js",
+      "PackagePath": "staticwebassets\\js\\query-builder.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\query-builder.min.js.map",
+      "PackagePath": "staticwebassets\\js\\query-builder.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\query-builder.standalone.js",
+      "PackagePath": "staticwebassets\\js\\query-builder.standalone.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\select2.full.js",
+      "PackagePath": "staticwebassets\\js\\select2.full.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\select2.full.min.js",
+      "PackagePath": "staticwebassets\\js\\select2.full.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\select2.full.min.js.map",
+      "PackagePath": "staticwebassets\\js\\select2.full.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\signalr.js",
+      "PackagePath": "staticwebassets\\js\\signalr.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\signalr.min.js",
+      "PackagePath": "staticwebassets\\js\\signalr.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\js\\signalr.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\sweetalert2.js",
+      "PackagePath": "staticwebassets\\js\\sweetalert2.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\sweetalert2.min.js",
+      "PackagePath": "staticwebassets\\js\\sweetalert2.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\tabulator.js",
+      "PackagePath": "staticwebassets\\js\\tabulator.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\tabulator.js.map",
+      "PackagePath": "staticwebassets\\js\\tabulator.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\tabulator.min.js",
+      "PackagePath": "staticwebassets\\js\\tabulator.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\tabulator.min.js.map",
+      "PackagePath": "staticwebassets\\js\\tabulator.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\tempus-dominus.js",
+      "PackagePath": "staticwebassets\\js\\tempus-dominus.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\tempus-dominus.min.js",
+      "PackagePath": "staticwebassets\\js\\tempus-dominus.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\tempus-dominus.min.js.map",
+      "PackagePath": "staticwebassets\\js\\tempus-dominus.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\typeahead.jquery.js",
+      "PackagePath": "staticwebassets\\js\\typeahead.jquery.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\typeahead.jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\typeahead.jquery.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\typeahead.jquery.min.js.map",
+      "PackagePath": "staticwebassets\\js\\typeahead.jquery.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\userevent.js",
+      "PackagePath": "staticwebassets\\js\\userevent.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\userfn.js",
+      "PackagePath": "staticwebassets\\js\\userfn.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\userpriv.js",
+      "PackagePath": "staticwebassets\\js\\userpriv.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\userpriv.min.js",
+      "PackagePath": "staticwebassets\\js\\userpriv.min.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\js\\userpriv.min.js.map",
+      "PackagePath": "staticwebassets\\js\\userpriv.min.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\lang\\english.xml",
+      "PackagePath": "staticwebassets\\lang\\english.xml"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\lang\\indonesian.xml",
+      "PackagePath": "staticwebassets\\lang\\indonesian.xml"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\package-lock.json",
+      "PackagePath": "staticwebassets\\package-lock.json"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\package.json",
+      "PackagePath": "staticwebassets\\package.json"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\all.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\all.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\all.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\brands.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\brands.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\brands.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\brands.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\fontawesome.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\fontawesome.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\fontawesome.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\fontawesome.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\regular.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\regular.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\regular.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\regular.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\solid.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\solid.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\solid.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\solid.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\svg-with-js.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\svg-with-js.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\svg-with-js.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\svg-with-js.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\v5-font-face.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\v5-font-face.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\css\\v5-font-face.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\css\\v5-font-face.min.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome-free\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\favicon-16x16.png",
+      "PackagePath": "staticwebassets\\swagger\\favicon-16x16.png"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\favicon-32x32.png",
+      "PackagePath": "staticwebassets\\swagger\\favicon-32x32.png"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\index.html",
+      "PackagePath": "staticwebassets\\swagger\\index.html"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\oauth2-redirect.html",
+      "PackagePath": "staticwebassets\\swagger\\oauth2-redirect.html"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui-bundle.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-bundle.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui-bundle.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-bundle.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui-standalone-preset.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-standalone-preset.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui-standalone-preset.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui-standalone-preset.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui.css",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.css"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui.css.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.css.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui.js",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.js"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\swagger\\swagger-ui.js.map",
+      "PackagePath": "staticwebassets\\swagger\\swagger-ui.js.map"
+    },
+    {
+      "Id": "E:\\defa\\wwwroot\\txt\\onetimepassword.txt",
+      "PackagePath": "staticwebassets\\txt\\onetimepassword.txt"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ASPNETMaker2023.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.ASPNETMaker2023.props",
+      "PackagePath": "build\\ASPNETMaker2023.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.ASPNETMaker2023.props",
+      "PackagePath": "buildMultiTargeting\\ASPNETMaker2023.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.ASPNETMaker2023.props",
+      "PackagePath": "buildTransitive\\ASPNETMaker2023.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
