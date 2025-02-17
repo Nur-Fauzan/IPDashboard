@@ -19,7 +19,7 @@ Before running the project, ensure you have the following installed:
 - Update the database connection string in `appsettings.json` and `appsettings.Development.json`:
 
 ```json
-"ConnectionStrings": {
+"DB": {
     ...
     "dbname": "YOUR_DB_NAME",
     "username": "YOUR_DB_USERNAME",
